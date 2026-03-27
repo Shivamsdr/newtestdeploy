@@ -1,0 +1,84 @@
+Connected to DB
+Found 7 tours
+
+TOUR: "MastRam" (ID: 6976333f8ad21dc233d72cac)
+  MaxGroupSize: 30
+  Records in DB: 129
+    Record: 2026-01-01, Total: 30, Booked: 0, Active: true
+    Record: 2026-01-02, Total: 30, Booked: 0, Active: true
+    Record: 2026-01-03, Total: 30, Booked: 0, Active: true
+    Record: 2026-01-04, Total: 30, Booked: 0, Active: true
+    Record: 2026-01-05, Total: 30, Booked: 0, Active: true
+  Service returns: 90 days total, 0 AVAILABLE.
+  NO AVAILABILITY! First range item: {"date":"2026-02-09","availableSlots":0,"totalSlots":0,"bookedSlots":0,"times":["16:38","18:38"]}
+----------------------------------------
+
+TOUR: "Colambatur3" (ID: 697634748ad21dc233d72cfe)
+  MaxGroupSize: 39
+  Records in DB: 121
+    Record: 2026-01-01, Total: 39, Booked: 0, Active: true
+    Record: 2026-01-02, Total: 39, Booked: 0, Active: true
+    Record: 2026-01-03, Total: 39, Booked: 0, Active: true
+    Record: 2026-01-04, Total: 39, Booked: 0, Active: true
+    Record: 2026-01-05, Total: 39, Booked: 0, Active: true
+  Service returns: 90 days total, 0 AVAILABLE.
+  NO AVAILABILITY! First range item: {"date":"2026-02-09","availableSlots":0,"totalSlots":0,"bookedSlots":0,"times":[]}
+----------------------------------------
+
+TOUR: "Colambatur4" (ID: 6976347f8ad21dc233d72d01)
+  MaxGroupSize: 15
+  Records in DB: 31
+    Record: 2026-01-01, Total: 15, Booked: 0, Active: true
+    Record: 2026-01-02, Total: 15, Booked: 0, Active: true
+    Record: 2026-01-03, Total: 15, Booked: 0, Active: true
+    Record: 2026-01-04, Total: 15, Booked: 0, Active: true
+    Record: 2026-01-05, Total: 15, Booked: 0, Active: true
+  Service returns: 90 days total, 0 AVAILABLE.
+  NO AVAILABILITY! First range item: {"date":"2026-02-09","availableSlots":0,"totalSlots":0,"bookedSlots":0,"times":[]}
+----------------------------------------
+
+TOUR: "Colambatur5" (ID: 697634908ad21dc233d72d04)
+  MaxGroupSize: 15
+  Records in DB: 31
+    Record: 2026-01-01, Total: 15, Booked: 0, Active: true
+    Record: 2026-01-02, Total: 15, Booked: 0, Active: true
+    Record: 2026-01-03, Total: 15, Booked: 0, Active: true
+    Record: 2026-01-04, Total: 15, Booked: 0, Active: true
+    Record: 2026-01-05, Total: 15, Booked: 0, Active: true
+  Service returns: 90 days total, 0 AVAILABLE.
+  NO AVAILABILITY! First range item: {"date":"2026-02-09","availableSlots":0,"totalSlots":0,"bookedSlots":0,"times":[]}
+----------------------------------------
+
+TOUR: "Goa" (ID: 6978c1ab4929220265b30333)
+  MaxGroupSize: 15
+  Records in DB: 516
+    Record: 2025-12-01, Total: 15, Booked: 0, Active: true
+    Record: 2025-12-02, Total: 15, Booked: 0, Active: true
+    Record: 2025-12-03, Total: 15, Booked: 0, Active: true
+    Record: 2025-12-04, Total: 15, Booked: 0, Active: true
+    Record: 2025-12-05, Total: 15, Booked: 0, Active: true
+  Service returns: 90 days total, 0 AVAILABLE.
+  NO AVAILABILITY! First range item: {"date":"2026-02-09","availableSlots":0,"totalSlots":0,"bookedSlots":0,"times":[]}
+----------------------------------------
+
+TOUR: "Testing" (ID: 69888741ab2328bea61c5132)
+  MaxGroupSize: 3
+  Records in DB: 90
+    Record: 2026-02-08, Total: 3, Booked: 0, Active: true
+    Record: 2026-02-09, Total: 3, Booked: 0, Active: true
+    Record: 2026-02-10, Total: 3, Booked: 0, Active: true
+    Record: 2026-02-11, Total: 3, Booked: 0, Active: true
+    Record: 2026-02-12, Total: 3, Booked: 0, Active: true
+  Service returns: 90 days total, 0 AVAILABLE.
+  NO AVAILABILITY! First range item: {"date":"2026-02-09","availableSlots":0,"totalSlots":0,"bookedSlots":0,"times":["18:14"]}
+----------------------------------------
+
+TOUR: "Booking test" (ID: 6989d37f207910b6ad6daebb)
+  MaxGroupSize: 1
+  Records in DB: 3
+    Record: 2026-02-09, Total: 1, Booked: 0, Active: true
+    Record: 2026-02-10, Total: 1, Booked: 0, Active: true
+    Record: 2026-02-11, Total: 1, Booked: 0, Active: true
+  Service returns: 90 days total, 0 AVAILABLE.
+  NO AVAILABILITY! First range item: {"date":"2026-02-09","availableSlots":0,"totalSlots":0,"bookedSlots":0,"times":["18:01"]}
+----------------------------------------

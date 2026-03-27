@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Working Images</title>
+    <style>
+        body { margin: 0; padding: 20px; background: #000; color: white; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #333; }
+        .test-img { width: 100%; height: 200px; object-fit: cover; }
+    </style>
+</head>
+<body>
+    <h1>Testing Working Images</h1>
+    
+    <div class="test-section">
+        <h2>Hero Image</h2>
+        <img class="test-img" src="https://picsum.photos/2070/1300" alt="Hero" />
+        <p>URL: https://picsum.photos/2070/1300</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Tours Image</h2>
+        <img class="test-img" src="https://picsum.photos/2070/1380" alt="Tours" />
+        <p>URL: https://picsum.photos/2070/1380</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Testimonials Image</h2>
+        <img class="test-img" src="https://picsum.photos/2070/1380" alt="Testimonials" />
+        <p>URL: https://picsum.photos/2070/1380</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>CTA Image</h2>
+        <img class="test-img" src="https://picsum.photos/2070/1380" alt="CTA" />
+        <p>URL: https://picsum.photos/2070/1380</p>
+    </div>
+    
+    <script>
+        // Test each image
+        const images = document.querySelectorAll('.test-img');
+        images.forEach((img, index) => {
+            img.onload = () => console.log(`Image ${index + 1} loaded successfully`);
+            img.onerror = (e) => console.error(`Image ${index + 1} failed to load:`, e);
+        });
+    </script>
+</body>
+</html>

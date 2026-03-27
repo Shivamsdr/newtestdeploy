@@ -1,0 +1,46 @@
+const Button = ({
+  children,
+  onClick,
+  type = 'button',
+  variant = 'primary',
+  size = 'md',
+  disabled = false,
+  className = '',
+  ...props
+}) => {
+  const baseStyles =
+    'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 min-h-[44px] cursor-pointer select-none transform hover:scale-105 active:scale-95';
+
+  const variants = {
+    primary: 'bg-gradient-to-r from-stone-100 to-stone-200 hover:from-stone-200 hover:to-stone-300 text-stone-800 font-semibold shadow-sm hover:shadow-md focus:ring-stone-400 active:shadow-sm border border-stone-300/50',
+    secondary: 'bg-gradient-to-r from-stone-50 to-stone-100 hover:from-stone-100 hover:to-stone-200 text-stone-700 font-medium shadow-sm hover:shadow-md focus:ring-stone-400 active:shadow-sm border border-stone-200/50',
+    danger: 'bg-red-100 hover:bg-red-200 text-red-700 shadow-sm hover:shadow-md focus:ring-red-400 active:shadow-sm border border-red-200/50',
+    outline: 'border-2 border-stone-400 text-stone-600 hover:bg-stone-50 focus:ring-stone-400 hover:border-stone-500 active:bg-stone-100',
+  };
+
+  const sizes = {
+    sm: 'px-4 py-2 text-sm rounded-lg',
+    md: 'px-6 py-3 text-base rounded-xl',
+    lg: 'px-8 py-4 text-base md:px-10 md:py-4 md:text-lg rounded-xl',
+  };
+
+  const disabledStyles = disabled
+    ? 'opacity-50 cursor-not-allowed transform-none hover:scale-100 active:scale-100 shadow-none'
+    : '';
+
+  const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${disabledStyles} ${className}`;
+
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={classes}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default Button;

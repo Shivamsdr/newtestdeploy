@@ -27,6 +27,14 @@ export const api = axios.create({
    fetch if it was downloaded recently.
 */
 const API_CACHE = new Map();
+/**
+ * Clear the in-memory API cache.
+ * Call this when a mutation (create/update/delete) occurs to ensure next fetch gets fresh data.
+ */
+export const clearApiCache = () => {
+  API_CACHE.clear();
+};
+
 export const cachedApiGet = async (url, config = {}, ttlSeconds = 300) => {
   const key = url + JSON.stringify(config.params || {});
 
@@ -111,6 +119,13 @@ export const getTour = async (id) => {
   return cachedApiGet(`/tours/${id}`, {}, 300);
 };
 
+// HELPER: Mutation wrapper to clear cache after success
+const mutate = async (method, url, data) => {
+  const response = await api[method](url, data);
+  clearApiCache();
+  return response.data;
+};
+
 /**
  * Create an enquiry
  * @param {Object} enquiryData - The enquiry payload
@@ -123,8 +138,7 @@ export const getTour = async (id) => {
  * @returns {Promise<Object>} API response data
  */
 export const createEnquiry = async (enquiryData) => {
-  const { data } = await api.post('/enquiries', enquiryData);
-  return data;
+  return mutate('post', '/enquiries', enquiryData);
 };
 
 /**
@@ -141,8 +155,7 @@ export const getEnquiries = async () => {
  * @returns {Promise<{ status: string, data: { deletedCount: number } }>}
  */
 export const clearCompletedEnquiries = async () => {
-  const { data } = await api.delete('/enquiries/completed');
-  return data;
+  return mutate('delete', '/enquiries/completed');
 };
 
 /**
@@ -152,8 +165,7 @@ export const clearCompletedEnquiries = async () => {
  * @returns {Promise<{ status: string, data: { enquiry: Object } }>}
  */
 export const updateEnquiryStatus = async (id, status) => {
-  const { data } = await api.patch(`/enquiries/${id}/status`, { status });
-  return data;
+  return mutate('patch', `/enquiries/${id}/status`, { status });
 };
 
 /**
@@ -174,18 +186,15 @@ export const login = async (emailOrUsername, password) => {
 // ============================================
 
 export const createTour = async (tourData) => {
-  const { data } = await api.post('/tours', tourData);
-  return data;
+  return mutate('post', '/tours', tourData);
 };
 
 export const updateTour = async (id, tourData) => {
-  const { data } = await api.patch(`/tours/${id}`, tourData);
-  return data;
+  return mutate('patch', `/tours/${id}`, tourData);
 };
 
 export const deleteTour = async (id) => {
-  const { data } = await api.delete(`/tours/${id}`);
-  return data;
+  return mutate('delete', `/tours/${id}`);
 };
 
 /**
@@ -207,8 +216,7 @@ export const getTourAvailabilityAdmin = async (tourId, start, end) => {
  * @param {string[]} times - HH:mm strings
  */
 export const setTourAvailabilityTimesAdmin = async (tourId, date, times) => {
-  const { data } = await api.put(`/tours/${tourId}/availability/${date}`, { times });
-  return data;
+  return mutate('put', `/tours/${tourId}/availability/${date}`, { times });
 };
 
 // ============================================
@@ -226,18 +234,15 @@ export const getTestimonial = async (id) => {
 };
 
 export const createTestimonial = async (testimonialData) => {
-  const { data } = await api.post('/testimonials', testimonialData);
-  return data;
+  return mutate('post', '/testimonials', testimonialData);
 };
 
 export const updateTestimonial = async (id, testimonialData) => {
-  const { data } = await api.patch(`/testimonials/${id}`, testimonialData);
-  return data;
+  return mutate('patch', `/testimonials/${id}`, testimonialData);
 };
 
 export const deleteTestimonial = async (id) => {
-  const { data } = await api.delete(`/testimonials/${id}`);
-  return data;
+  return mutate('delete', `/testimonials/${id}`);
 };
 
 // ============================================
@@ -259,18 +264,15 @@ export const getBlogBySlug = async (slug) => {
 };
 
 export const createBlog = async (blogData) => {
-  const { data } = await api.post('/blogs', blogData);
-  return data;
+  return mutate('post', '/blogs', blogData);
 };
 
 export const updateBlog = async (id, blogData) => {
-  const { data } = await api.patch(`/blogs/${id}`, blogData);
-  return data;
+  return mutate('patch', `/blogs/${id}`, blogData);
 };
 
 export const deleteBlog = async (id) => {
-  const { data } = await api.delete(`/blogs/${id}`);
-  return data;
+  return mutate('delete', `/blogs/${id}`);
 };
 
 // ============================================
@@ -289,18 +291,15 @@ export const getJob = async (id) => {
 };
 
 export const createJob = async (jobData) => {
-  const { data } = await api.post('/jobs', jobData);
-  return data;
+  return mutate('post', '/jobs', jobData);
 };
 
 export const updateJob = async (id, jobData) => {
-  const { data } = await api.patch(`/jobs/${id}`, jobData);
-  return data;
+  return mutate('patch', `/jobs/${id}`, jobData);
 };
 
 export const deleteJob = async (id) => {
-  const { data } = await api.delete(`/jobs/${id}`);
-  return data;
+  return mutate('delete', `/jobs/${id}`);
 };
 
 // ============================================
@@ -322,23 +321,19 @@ export const getTimelineStep = async (id) => {
 };
 
 export const createTimelineStep = async (stepData) => {
-  const { data } = await api.post('/timeline', stepData);
-  return data;
+  return mutate('post', '/timeline', stepData);
 };
 
 export const updateTimelineStep = async (id, stepData) => {
-  const { data } = await api.patch(`/timeline/${id}`, stepData);
-  return data;
+  return mutate('patch', `/timeline/${id}`, stepData);
 };
 
 export const deleteTimelineStep = async (id) => {
-  const { data } = await api.delete(`/timeline/${id}`);
-  return data;
+  return mutate('delete', `/timeline/${id}`);
 };
 
 export const reorderTimelineSteps = async (tourId, steps) => {
-  const { data } = await api.put(`/timeline/tour/${tourId}/reorder`, { steps });
-  return data;
+  return mutate('put', `/timeline/tour/${tourId}/reorder`, { steps });
 };
 
 // ============================================
@@ -409,8 +404,7 @@ export const getTourAvailability = async (tourId) => {
  * @returns {Promise<{ status: string, data: { booking: Object } }>}
  */
 export const createBooking = async (payload) => {
-  const { data } = await api.post('/bookings', payload);
-  return data;
+  return mutate('post', '/bookings', payload);
 };
 
 /**
@@ -440,8 +434,7 @@ export const getBookingById = async (id) => {
  * @returns {Promise<{ status: string, data: { booking: Object } }>}
  */
 export const updateBookingStatus = async (id, status) => {
-  const { data } = await api.patch(`/bookings/${id}/status`, { status });
-  return data;
+  return mutate('patch', `/bookings/${id}/status`, { status });
 };
 
 /**
@@ -450,8 +443,7 @@ export const updateBookingStatus = async (id, status) => {
  * @returns {Promise<{ status: string, data: null, message: string }>}
  */
 export const deleteBooking = async (id) => {
-  const { data } = await api.delete(`/bookings/${id}`);
-  return data;
+  return mutate('delete', `/bookings/${id}`);
 };
 
 /**
@@ -460,8 +452,7 @@ export const deleteBooking = async (id) => {
  * @returns {Promise<{ status: string, data: { booking: Object, payment: Object } }>}
  */
 export const createOfflineBooking = async (payload) => {
-  const { data } = await api.post('/bookings/offline', payload);
-  return data;
+  return mutate('post', '/bookings/offline', payload);
 };
 
 // ============================================
@@ -527,8 +518,7 @@ export const getSettings = async () => {
  * @returns {Promise<{ status: string, data: { settings: Object } }>}
  */
 export const updateSettings = async (settingsData) => {
-  const { data } = await api.patch('/settings', settingsData);
-  return data;
+  return mutate('patch', '/settings', settingsData);
 };
 
 /**
@@ -575,17 +565,14 @@ export const getCorporateCard = async (id) => {
 };
 
 export const createCorporateCard = async (cardData) => {
-  const { data } = await api.post('/corporate-cards', cardData);
-  return data;
+  return mutate('post', '/corporate-cards', cardData);
 };
 
 export const updateCorporateCard = async (id, cardData) => {
-  const { data } = await api.patch(`/corporate-cards/${id}`, cardData);
-  return data;
+  return mutate('patch', `/corporate-cards/${id}`, cardData);
 };
 
 export const deleteCorporateCard = async (id) => {
-  const { data } = await api.delete(`/corporate-cards/${id}`);
-  return data;
+  return mutate('delete', `/corporate-cards/${id}`);
 };
 

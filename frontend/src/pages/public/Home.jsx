@@ -81,10 +81,9 @@ const Home = () => {
             src={heroImage}
             alt="Panjim Church Heritage"
             className="w-full h-full object-cover"
-            onLoad={() => console.log('Hero image loaded successfully')}
+            onLoad={() => {}} // No console log needed for production
             onError={(e) => {
-              console.error('Hero image failed to load:', e);
-              console.log('Hero image URL was:', heroImage);
+              console.error('Hero image failed to load');
               e.target.style.display = 'none';
               e.target.parentElement.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)';
             }}
@@ -407,8 +406,8 @@ const Home = () => {
                     }}
                   />
                   <div className="absolute inset-0 bg-black/70"></div>
-                  <div className="absolute -top-24 -left-24 w-[400px] h-[400px] sm:-top-32 sm:-left-32 sm:w-[520px] sm:h-[520px] rounded-full bg-[#F5B400]/10 blur-3xl"></div>
-                  <div className="absolute -bottom-32 -right-32 w-[440px] h-[440px] sm:-bottom-40 sm:-right-40 sm:w-[560px] sm:h-[560px] rounded-full bg-white/5 blur-3xl"></div>
+                  <div className="absolute -top-24 -left-24 w-[400px] h-[400px] sm:-top-32 sm:-left-32 sm:w-[520px] sm:h-[520px] rounded-full bg-[#F5B400]/5 blur-2xl"></div>
+                  <div className="absolute -bottom-32 -right-32 w-[440px] h-[440px] sm:-bottom-40 sm:-right-40 sm:w-[560px] sm:h-[560px] rounded-full bg-white/5 blur-2xl"></div>
                   <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-black via-black/60 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                 </div>
@@ -475,8 +474,8 @@ const Home = () => {
       */}
       <section className="relative py-20 bg-[#050509] overflow-hidden">
         {/* Background elements */}
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#F5B400]/5 rounded-full blur-[80px] pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#F5B400]/5 rounded-full blur-[80px] pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#F5B400]/10 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#F5B400]/10 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -538,6 +537,15 @@ const Home = () => {
          SECTION 4: OUR PARTNERS (Themed, Borderless, Colorful)
       */}
       <section className="relative py-24 bg-[#0a0a0d] overflow-hidden border-t border-b border-white/5">
+        {/* Background Texture Overlay */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <img
+            src={textureImage}
+            alt="Partners Texture"
+            className="w-full h-full object-cover mix-blend-overlay"
+          />
+        </div>
+
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-16 text-center">
           <span className="text-[#F5B400] font-semibold tracking-[0.2em] uppercase text-sm lg:text-base block mb-3">
             Trusted By The Best
@@ -551,7 +559,7 @@ const Home = () => {
         </div>
 
         {/* Infinite Marquee Container */}
-        <div className="relative flex w-full overflow-hidden py-10 bg-black/20 backdrop-blur-sm border-y border-white/5 shadow-xl shadow-black/50">
+        <div className="relative flex w-full overflow-hidden py-10 bg-[#0a0a0d] border-y border-white/5 shadow-xl shadow-black/50">
           {/* Gradient Edges to fade the marquee smoothly (matching dark bg) */}
           <div className="absolute left-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-r from-[#0a0a0d] to-transparent z-10 pointer-events-none"></div>
           <div className="absolute right-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-l from-[#0a0a0d] to-transparent z-10 pointer-events-none"></div>

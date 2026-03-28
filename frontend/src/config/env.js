@@ -16,7 +16,6 @@ const getEnv = (key, fallback = '') => {
 /** API base URL. Fallback for local dev when .env is missing. */
 export const VITE_API_BASE_URL =
   getEnv('VITE_API_BASE_URL') || 'http://localhost:3000/api/v1';
-  console.log("API BASE URL =", VITE_API_BASE_URL);
 
 /** EmailJS Service ID. Empty if not set. */
 export const VITE_EMAILJS_SERVICE_ID = getEnv('VITE_EMAILJS_SERVICE_ID');

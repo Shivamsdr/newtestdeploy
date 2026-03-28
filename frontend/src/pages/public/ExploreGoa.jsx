@@ -46,13 +46,13 @@ const ExploreGoa = () => {
         </div>
         <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-[#F5B400] text-xs md:text-sm font-semibold tracking-[0.35em] uppercase mb-4">
-            Stories &amp; Guides
+            Your Travel Journal
           </p>
           <h1 className="font-satisfy text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-5">
             Explore <span className="text-[#F5B400]">Goa</span>
           </h1>
           <p className="text-white/80 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-            Curated reads on heritage, culture, food, and hidden gems—your inspiration before the walk.
+            Curated journey reads through Goa's food, heritage, and culture. Your companion before you travel.
           </p>
         </div>
       </section>

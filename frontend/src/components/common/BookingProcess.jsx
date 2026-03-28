@@ -5,20 +5,20 @@ import { smoothScrollToTop } from '../../utils/smoothScroll';
 
 const steps = [
     {
-        title: "Choose Your Vibe",
-        desc: "Browse our curated collection of immersive heritage walks and pick your perfect experience."
+        title: "Choose Your Experience",
+        desc: "Browse our curated collection of immersive heritage walks and pick the one that excites you."
     },
     {
-        title: "Reserve @ ₹0",
-        desc: "Secure your spot instantly. No credit card required upfront—we trust our travellers!"
+        title: "Reserve Instantly @ ₹0",
+        desc: "Secure your spot with a free reservation. No upfront payment or card details required."
     },
     {
-        title: "Walk with History",
-        desc: "Immerse yourself in untold stories and hidden gems guided by our expert storytellers."
+        title: "We'll Reach Out to You",
+        desc: "Our team will contact you before the walk to arrange payment, share tour details, and answer any questions you might have. Consider us your go-to for any Questions!"
     },
     {
-        title: "Pay Before Arrival",
-        desc: "We will reach out to you 24 hours before your tour to collect payment and finalize our walk."
+        title: "Pay Before You Tour",
+        desc: "Complete your payment prior to the tour, and get ready for an unforgettable experience."
     }
 ];
 
@@ -42,8 +42,8 @@ const BookingProcess = () => {
     return (
         <section className="bg-[#050509] text-white overflow-hidden font-sans border-t border-b border-white/5 relative flex lg:h-screen lg:min-h-[850px] lg:max-h-[1080px] w-full items-center py-16 lg:py-0">
             {/* Background Details */}
-            <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#F5B400]/5 rounded-full blur-[100px] pointer-events-none"></div>
-            <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#47E4FF]/5 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#F5B400]/5 rounded-full blur-3xl opacity-75 pointer-events-none"></div>
+            <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#47E4FF]/5 rounded-full blur-3xl opacity-75 pointer-events-none"></div>
 
             <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 flex flex-col h-full justify-center">
 
@@ -51,7 +51,7 @@ const BookingProcess = () => {
                 <div className="text-center mb-10 lg:mb-12">
                     <span className="text-[#F5B400] font-semibold tracking-[0.2em] uppercase text-sm lg:text-base">How it works</span>
                     <h2 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-satisfy font-bold tracking-tight mt-3">
-                        Book Tour in 4 Easy Steps
+                        How to Book Your Tour
                     </h2>
                 </div>
 

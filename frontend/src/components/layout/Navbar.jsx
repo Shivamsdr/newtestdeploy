@@ -3,20 +3,22 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { smoothScrollToTop } from '../../utils/smoothScroll';
 
-
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
 
-  // Handle scroll effect
+  // Handle scroll effect with robust detection
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      // Check multiple scroll sources for mobile compatibility
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      setIsScrolled(scrollTop > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run an initial check for page reloads
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -29,8 +31,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ease-in-out ${isScrolled ? 'bg-[#050509]/80 backdrop-blur-md border-b border-white/5 shadow-xl py-2 md:py-3' : 'bg-transparent py-4 md:py-6 border-transparent'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
+        isScrolled
+          ? 'bg-[#0a0a0a] border-b border-white/10 shadow-2xl py-2 md:py-3'
+          : 'bg-transparent py-4 md:py-6 border-transparent'
+      }`}
+      style={{ backgroundColor: isScrolled ? '#0a0a0a' : 'transparent' }}
     >
       <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-10 relative">
         <div className="flex items-center justify-between">
@@ -136,8 +142,9 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       <div
-        className={`lg:hidden fixed inset-0 top-16 bg-black/95 backdrop-blur-xl transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-          }`}
+        className={`lg:hidden fixed inset-0 top-[72px] bg-[#0a0a0a] transition-all duration-300 ease-in-out ${
+          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+        }`}
       >
         <div className="px-4 pt-8 pb-3 space-y-4">
           <Link
@@ -185,7 +192,7 @@ const Navbar = () => {
 
           <div className="mt-8 px-4 flex flex-col gap-4">
             <Link to="/tours" onClick={() => { setIsOpen(false); smoothScrollToTop(); }}>
-              <button className="w-full px-6 py-3 bg-[#F5B400] text-black hover:bg-[#ffc107]  font-bold rounded-full shadow-[0_0_15px_rgba(71,228,255,0.3)] border-none">
+              <button className="w-full px-6 py-3 bg-[#F5B400] text-black hover:bg-[#ffc107] font-bold rounded-full shadow-[0_0_15px_rgba(71,228,255,0.3)] border-none">
                 Book Now
               </button>
             </Link>
@@ -207,4 +214,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

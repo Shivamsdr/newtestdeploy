@@ -80,7 +80,7 @@ const FloatingBookNow = () => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm animate-fade-in">
+        <div className="fixed inset-0 z-[1100] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm animate-fade-in">
             <div className="relative w-[95vw] sm:w-full max-w-[90vw] md:max-w-4xl max-h-[90vh] bg-[#111] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(245,180,0,0.2)] border border-white/10 flex flex-col md:flex-row animate-scale-up">
 
                 {/* Close Button */}

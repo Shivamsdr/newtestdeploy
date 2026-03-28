@@ -92,13 +92,16 @@ app.use(cors({
 app.use((req, res, next) => {
   const publicPaths = ['/api/v1/tours', '/api/v1/blogs', '/api/v1/testimonials', '/api/v1/timeline', '/api/v1/jobs', '/api/v1/settings/public'];
   const isPublic = publicPaths.some(p => req.path.startsWith(p));
+  const isAuth = req.headers.authorization;
 
-  if (req.method === 'GET' && isPublic) {
-    // Cache GET response heavily in the browser and on Vercel Edge networks limits redundant DB loads
+  if (req.method === 'GET' && isPublic && !isAuth) {
+    // Cache GET response heavily for PUBLIC users only
     res.set('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=600');
   } else {
-    // Make sure sensitive or highly dynamic admin APIs do NOT get cached heavily
-    res.set('Cache-Control', 'no-store');
+    // Admin or private/auth requests should ALWAYS get fresh data
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.set('Pragma', 'no-cache');
+    res.set('Expires', '0');
   }
   next();
 });
